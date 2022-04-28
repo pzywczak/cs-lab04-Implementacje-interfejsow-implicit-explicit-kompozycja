@@ -75,6 +75,12 @@ namespace ver1
 
 
 		}
+
+		public void ScanAndPrint()
+		{
+			Scan(out IDocument document, IDocument.FormatType.JPG);
+			Print(document);
+		}
 	}
 
 }
