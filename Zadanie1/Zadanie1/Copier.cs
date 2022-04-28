@@ -15,7 +15,7 @@ namespace ver1
 		
 			if (state == IDevice.State.on)
 			{
-				Console.WriteLine("{0} Print: {1}", DateTime.Today, document.GetFileName());
+				Console.WriteLine("{0} Print: {1}", DateTime.Now, document.GetFileName());
 				PrintCounter++;
 			}
 		}
@@ -68,7 +68,7 @@ namespace ver1
 			if (state == IDevice.State.on)
 			{
 				ScanCounter++;
-				Console.WriteLine("{0}, Scan: {1}",DateTime.Today, document.GetFileName());
+				Console.WriteLine("{0}, Scan: {1}",DateTime.Now, document.GetFileName());
 			}
 		
 

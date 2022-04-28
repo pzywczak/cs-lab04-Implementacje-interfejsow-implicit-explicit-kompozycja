@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zadanie1
+namespace ver1
 {
     class Program
     {
