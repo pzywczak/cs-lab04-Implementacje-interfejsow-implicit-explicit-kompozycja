@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Zadanie3
 {
-    class Printer : IPrinter
+    public class Printer : IPrinter
     {
 		public int PrintCounter { get; set; } = 0;
 		public new int Counter { get; set; } = 0;
