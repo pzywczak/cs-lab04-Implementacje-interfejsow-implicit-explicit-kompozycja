@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zadanie2
+namespace Zadanie3
 {
-	 public class MultifunctionalDevice :BaseDevice, IPrinter, IScanner, IFax
+	 public class MultifunctionalDevice : Copier
     {
 		
 		public int PrintCounter { get; set; } = 0;

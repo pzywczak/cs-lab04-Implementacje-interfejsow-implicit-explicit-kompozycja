@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zadanie2
+namespace Zadanie3
 {
-	 public class MultifunctionalDevice :BaseDevice, IPrinter, IScanner, IFax
+    public class Copier : BaseDevice
     {
-		
 		public int PrintCounter { get; set; } = 0;
 		public int ScanCounter { get; set; } = 0;
 		public new int Counter { get; set; }
-		public string FaxNumber { get; set; }
 
-		public MultifunctionalDevice(string faxNumber)
-		{
-			FaxNumber = faxNumber;
-		}
+		private Printer Printer;
 
 		public void Print(in IDocument document)
 		{
@@ -67,10 +62,12 @@ namespace Zadanie2
 			}
 			else if (formatType == IDocument.FormatType.TXT)
 			{
-				document = new TextDocument(nameDocument);				}
+				document = new TextDocument(nameDocument);
+			}
 			else
 			{
-				document = new ImageDocument(nameDocument);				}
+				document = new ImageDocument(nameDocument);
+			}
 
 			if (state == IDevice.State.on)
 			{
@@ -78,26 +75,15 @@ namespace Zadanie2
 				Console.WriteLine("{0}, Scan: {1}", DateTime.Now, document.GetFileName());
 			}
 
-			}
-		public void Fax(IDocument document, string faxNumber)
-		{
-			if (state == IDevice.State.on)
-			{
-				Counter++;
-				Console.WriteLine($"{DateTime.Today} Sent: {document.GetFileName()} from: {this.FaxNumber} to: {faxNumber}");
-			}
+
+
+
 		}
 
-		public void ScanAndSend(string faxNumber)
-		{
-			Scan(out IDocument doc);
-			Fax(doc, faxNumber);
-		}
 		public void ScanAndPrint()
-			{
-				Scan(out IDocument document, IDocument.FormatType.JPG);
-				Print(document);
-			}
+		{
+			Scan(out IDocument document, IDocument.FormatType.JPG);
+			Print(document);
 		}
 	}
-
+}
