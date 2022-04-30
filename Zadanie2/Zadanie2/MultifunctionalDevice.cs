@@ -9,13 +9,14 @@ namespace Zadanie2
 		
 		public int PrintCounter { get; set; } = 0;
 		public int ScanCounter { get; set; } = 0;
+		public int FaxCounter { get; set; } = 0;
 		public new int Counter { get; set; }
-		public string FaxNumber { get; set; }
+		
 
-		public MultifunctionalDevice(string faxNumber)
-		{
-			FaxNumber = faxNumber;
-		}
+		//public MultifunctionalDevice(string faxNumber)
+		//{
+//FaxNumber = faxNumber;
+		//}
 
 		public void Print(in IDocument document)
 		{
@@ -79,25 +80,27 @@ namespace Zadanie2
 			}
 
 			}
-		public void Fax(IDocument document, string faxNumber)
+		public void ScanAndPrint()
+		{
+			Scan(out IDocument document, IDocument.FormatType.JPG);
+			Print(document);
+		}
+		public void sendFax(IDocument document, string faxNumber)
 		{
 			if (state == IDevice.State.on)
 			{
-				Counter++;
-				Console.WriteLine($"{DateTime.Today} Sent: {document.GetFileName()} from: {this.FaxNumber} to: {faxNumber}");
+				FaxCounter++;
+				Console.WriteLine($"{DateTime.Now}, Fax: {document.GetFileName()} to: {faxNumber}");
+				
 			}
 		}
 
 		public void ScanAndSend(string faxNumber)
 		{
 			Scan(out IDocument doc);
-			Fax(doc, faxNumber);
+			sendFax(doc, faxNumber);
 		}
-		public void ScanAndPrint()
-			{
-				Scan(out IDocument document, IDocument.FormatType.JPG);
-				Print(document);
-			}
+		
 		}
 	}
 
